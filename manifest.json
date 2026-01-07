@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "NHS-Link AI Assistant",
+  "version": "1.0.0",
+  "description": "AI-powered email drafting assistant for NHS staff using Outlook Web App.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://outlook.office.com/*",
+    "https://*.nhs.net/*",
+    "https://api.openai.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "NHS-Link Settings"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://outlook.office.com/*",
+        "https://*.nhs.net/*"
+      ],
+      "js": ["scripts/content.js"],
+      "css": ["styles/nhs.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

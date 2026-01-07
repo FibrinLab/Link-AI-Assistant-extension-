@@ -1,0 +1,259 @@
+/* NHS Colour Palette - https://service-manual.nhs.uk/design-system/styles/colour */
+:root {
+  --nhs-blue: #005EB8;
+  --nhs-dark-blue: #003087;
+  --nhs-bright-blue: #0072CE;
+  --nhs-light-blue: #41B6E6;
+  --nhs-white: #FFFFFF;
+  --nhs-pale-grey: #F0F4F5; /* Slightly lighter for modern feel */
+  --nhs-warm-grey: #768692;
+  --nhs-mid-grey: #4C6272;
+  --nhs-black: #212B32;
+  --nhs-green: #007F3B;
+  --nhs-red: #D5281B;
+  --nhs-focus-yellow: #FFEB3B;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: -5px 0 25px rgba(0, 0, 0, 0.15);
+  --radius-md: 8px;
+  --radius-sm: 4px;
+}
+
+/* Reset & Fonts inside the sidebar to prevent Outlook style bleed */
+#nhs-link-sidebar * {
+  box-sizing: border-box;
+  font-family: "Frutiger", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Sidebar Container */
+#nhs-link-sidebar {
+  position: fixed;
+  top: 0;
+  right: -420px; /* Increased width for better readability */
+  width: 400px;
+  height: 100vh;
+  background-color: var(--nhs-pale-grey);
+  box-shadow: var(--shadow-lg);
+  z-index: 2147483647; /* Max z-index */
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* iOS-like smooth spring */
+  display: flex;
+  flex-direction: column;
+  border-left: none;
+}
+
+#nhs-link-sidebar.open {
+  right: 0;
+}
+
+/* Header */
+.nhs-header {
+  background: linear-gradient(135deg, var(--nhs-blue) 0%, var(--nhs-dark-blue) 100%);
+  color: var(--nhs-white);
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+
+.nhs-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nhs-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.nhs-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+
+/* Main Content */
+.nhs-content {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Inputs & Labels */
+.nhs-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nhs-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--nhs-mid-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nhs-select, textarea.nhs-select {
+  padding: 12px;
+  border: 2px solid #D8DDE0;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  color: var(--nhs-black);
+  background-color: var(--nhs-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.nhs-select:focus, textarea.nhs-select:focus {
+  outline: none;
+  border-color: var(--nhs-blue);
+  box-shadow: 0 0 0 3px rgba(0, 94, 184, 0.2);
+}
+
+textarea.nhs-select {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Buttons */
+.nhs-btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.nhs-btn-primary {
+  background-color: var(--nhs-blue);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 94, 184, 0.3);
+}
+
+.nhs-btn-primary:hover {
+  background-color: var(--nhs-dark-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 94, 184, 0.4);
+}
+
+.nhs-btn-primary:active {
+  transform: translateY(0);
+}
+
+.nhs-btn-secondary {
+  background-color: var(--nhs-white);
+  color: var(--nhs-blue);
+  border: 2px solid var(--nhs-blue);
+}
+
+.nhs-btn-secondary:hover {
+  background-color: #E6F0F9;
+}
+
+.nhs-btn:disabled {
+  background-color: #D8DDE0;
+  color: #768692;
+  cursor: not-allowed;
+  border: none;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Preview Box */
+.nhs-preview-box {
+  background: var(--nhs-white);
+  border: 1px solid #D8DDE0;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  min-height: 180px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--nhs-black);
+  white-space: pre-wrap;
+  overflow-y: auto;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  font-family: "Segoe UI", Arial, sans-serif;
+  flex-grow: 1; /* Take up available space */
+}
+
+.nhs-preview-box:focus {
+  outline: none;
+  border-color: var(--nhs-blue);
+  box-shadow: 0 0 0 3px rgba(0, 94, 184, 0.1);
+}
+
+/* Status Indicators */
+.nhs-status {
+  font-size: 14px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  display: none;
+  animation: fadeIn 0.3s ease;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nhs-status.visible { display: flex; align-items: center; gap: 8px; }
+.nhs-status.loading { 
+  background-color: #E6F0F9; 
+  color: var(--nhs-blue); 
+  border-left: 4px solid var(--nhs-blue);
+}
+.nhs-status.error { 
+  background-color: #FFEAEA; 
+  color: var(--nhs-red); 
+  border-left: 4px solid var(--nhs-red);
+}
+
+/* Inject Button in Outlook Toolbar */
+.nhs-inject-btn {
+  background: linear-gradient(180deg, var(--nhs-blue) 0%, var(--nhs-dark-blue) 100%) !important;
+  color: white !important;
+  border-radius: 4px !important;
+  padding: 6px 16px !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--nhs-dark-blue) !important;
+  margin-left: 10px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  transition: all 0.2s !important;
+}
+
+.nhs-inject-btn:hover {
+  background: var(--nhs-dark-blue) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

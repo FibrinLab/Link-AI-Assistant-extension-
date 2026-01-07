@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHS-Link Settings</title>
+  <link rel="stylesheet" href="../styles/nhs.css">
+  <style>
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: 'Frutiger', Arial, sans-serif; /* NHS Frutiger or fallback */
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .logo {
+      font-weight: bold;
+      color: #005EB8;
+      font-size: 1.2em;
+      margin-bottom: 8px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    label {
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+    input[type="password"] {
+      padding: 8px;
+      border: 1px solid #768692;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #005EB8;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #003087;
+    }
+    #status {
+      font-size: 0.8em;
+      min-height: 1.2em;
+    }
+    .success { color: #007f3b; }
+    .error { color: #d5281b; }
+    .info-text {
+      font-size: 0.8em;
+      color: #4C6272;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">NHS-Link AI Assistant</div>
+    
+    <div class="input-group">
+      <label for="apiKey">OpenAI API Key</label>
+      <input type="password" id="apiKey" placeholder="sk-...">
+    </div>
+
+    <button id="saveBtn">Save Configuration</button>
+    <div id="status"></div>
+
+    <div class="info-text">
+      <p>Key is stored locally on your device.</p>
+    </div>
+    
+    <button id="clearBtn" style="background-color: #4C6272; margin-top: 10px;">Clear Data</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
